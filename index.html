@@ -1,3 +1,30 @@
-<html>
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>ethelloworld</title>
+</head>
+
+<body>
+  
+  <p id="message"></p>
+  
+  <script src="web3.min.js"></script>
+  <script>
+    var web3=require('web3');
+    if(typeof web3 !== 'undefined')
+      web3 = new Web3(web3.currentProvider);
+    else
+      web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    
+    var helloworldContract = web3.eth.contract([{"constant":false,"inputs":[],"name":"hello","outputs":[{"name":"retVal","type":"string"}],"type":"function"}]);
+    var helloworld = helloworldContract.at("0xf6e3e56888bf0520a20bf2f1722ef6fa48455218");
+    
+    document.getElementById("message").innerHTML = helloworld.hello();
+  </script>
+</body>
 
 </html>
