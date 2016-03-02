@@ -1,0 +1,7 @@
+contract helloWorld
+{
+    function hello() returns (string retVal)
+    {
+        return "Hello, world!";
+    }
+}
